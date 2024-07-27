@@ -21,12 +21,13 @@ def parseSnils(vuz, naprs, prior, attestat, snils):
         cell_obj = sheet_obj['A16': 'V' + str(mx)]
         array = []
 
-        headers = ["id", "snils", "bvi", "osobkvota", "celkvota", "otdkvota", "prioritet_cell", "prioritet_inoe",
-                   "highest_prioritet", "plat_prioritet", "math", "informatics", "russian", "IND", 'summ', 'mesto', 'orig',
-                   'soglasie', 'preimus', 'obsh', 'vozvrat']
+        headers = ["id", "snils", "bvi", "bvi_reason",
+                   "osobkvota", "celkvota", "otdkvota", "prioritet_cell", "prioritet_inoe", "plat_prioritet",
+                   "math", "informatics", "russian", "IND", 'summ', 'mesto', 'orig', 'soglasie', 'preimus', 'obsh',
+                   'vozvrat']
 
         for row in cell_obj:
-            vals = [(0 if x.value is None else x.value) for index, x in enumerate(row) if index != 2]
+            vals = [(0 if x.value is None else x.value) for index, x in enumerate(row) if index not in [2,5,6]]
             obj = dict(zip(headers, vals))
             array.append(obj)
             # print(obj)

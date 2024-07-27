@@ -18,6 +18,7 @@ def parseSelenium(conkurses):
         tds = row.find_elements(By.CSS_SELECTOR, "td")
         print(tds[0].text)
         if tds[0].text in conkurses:
+
             url = (tds[1].find_elements(By.CSS_SELECTOR, 'a')[0].get_attribute("href"))
 
 
